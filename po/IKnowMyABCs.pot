@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-28 11:07-0500\n"
+"POT-Creation-Date: 2012-12-28 21:26-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,30 +21,26 @@ msgstr ""
 msgid "I Know My ABCs"
 msgstr ""
 
-#: IKnowMyABCs.py:127
-msgid "Page"
-msgstr ""
-
-#: IKnowMyABCs.py:138 IKnowMyABCs.py:140
-msgid "listen to the letter names"
-msgstr ""
-
-#: IKnowMyABCs.py:149 IKnowMyABCs.py:153
-msgid "find the letter that corresponds to the sound"
-msgstr ""
-
-#: IKnowMyABCs.py:169 IKnowMyABCs.py:177
-msgid "Click on a card to hear a sound."
-msgstr ""
-
-#: page.py:184
+#: page.py:185
 msgid "Click on the card that corresponds to the sound."
 msgstr ""
 
-#: page.py:224
+#: page.py:228
 msgid "Very good!"
 msgstr ""
 
-#: page.py:227
+#: page.py:233
 msgid "Please try again."
+msgstr ""
+
+#: IKnowMyABCs.py:116 IKnowMyABCs.py:118
+msgid "listen to the letter names"
+msgstr ""
+
+#: IKnowMyABCs.py:127 IKnowMyABCs.py:131
+msgid "find the letter that corresponds to the sound"
+msgstr ""
+
+#: IKnowMyABCs.py:146 IKnowMyABCs.py:154
+msgid "Click on a card to hear a sound."
 msgstr ""

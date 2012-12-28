@@ -1,4 +1,5 @@
 #Copyright (c) 2012 Walter Bender
+#Copyright (c) 2012 Ignacio Rodriguez
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -10,31 +11,25 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
+from gi.repository import Gtk
+from gi.repository import Gdk
 
-import gtk
+from sugar3.activity import activity
+from sugar3.graphics.toolbarbox import ToolbarBox, ToolbarButton
 
-from sugar.activity import activity
-try:
-    from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
-    _HAVE_TOOLBOX = True
-except ImportError:
-    _HAVE_TOOLBOX = False
+from sugar3.activity.widgets import ActivityToolbarButton
+from sugar3.activity.widgets import StopButton
 
-if _HAVE_TOOLBOX:
-    from sugar.activity.widgets import ActivityToolbarButton
-    from sugar.activity.widgets import StopButton
-
-from sugar.graphics.toolbutton import ToolButton
-from sugar.graphics.combobox import ComboBox
-from sugar.graphics.toolcombobox import ToolComboBox
-from sugar.datastore import datastore
-from sugar import profile
+from sugar3.graphics.toolbutton import ToolButton
+from sugar3.graphics.combobox import ComboBox
+from sugar3.graphics.toolcombobox import ToolComboBox
+from sugar3.datastore import datastore
+from sugar3 import profile
 
 from gettext import gettext as _
 import os.path
 
 from page import Page
-from utils.grecord import Grecord
 from utils.play_audio import play_audio_from_file
 from utils.toolbar_utils import separator_factory, label_factory, radio_factory
 
@@ -61,7 +56,6 @@ class IKnowMyABCs(activity.Activity):
         self.reading = False
         self.testing = False
         self.recording = False
-        self.grecord = None
         self.datapath = get_path(activity, 'instance')
 
         if 'LANG' in os.environ:
@@ -87,11 +81,11 @@ class IKnowMyABCs(activity.Activity):
         self._setup_toolbars()
 
         # Create a canvas
-        canvas = gtk.DrawingArea()
-        width = gtk.gdk.screen_width()
-        height = int(gtk.gdk.screen_height())
+        canvas = Gtk.DrawingArea()
+        width = Gdk.Screen.width()
+        height = int(Gdk.Screen.height())
         canvas.set_size_request(width, height)
-        canvas.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
+        canvas.modify_bg(Gtk.StateType.NORMAL, Gdk.color_parse("#000000"))
         canvas.show()
         self.set_canvas(canvas)
 
@@ -107,33 +101,17 @@ class IKnowMyABCs(activity.Activity):
         # no sharing
         self.max_participants = 1
 
-        if _HAVE_TOOLBOX:
-            toolbox = ToolbarBox()
+        toolbox = ToolbarBox()
 
-            # Activity toolbar
-            activity_button = ActivityToolbarButton(self)
+        # Activity toolbar
+        activity_button = ActivityToolbarButton(self)
 
-            toolbox.toolbar.insert(activity_button, 0)
-            activity_button.show()
+        toolbox.toolbar.insert(activity_button, 0)
+        activity_button.show()
 
-            self.set_toolbar_box(toolbox)
-            toolbox.show()
-            primary_toolbar = toolbox.toolbar
-        else:
-            # Use pre-0.86 toolbar design
-            primary_toolbar = gtk.Toolbar()
-            toolbox = activity.ActivityToolbox(self)
-            self.set_toolbox(toolbox)
-            toolbox.add_toolbar(_('Page'), primary_toolbar)
-            toolbox.show()
-            toolbox.set_current_toolbar(1)
-
-            # no sharing
-            if hasattr(toolbox, 'share'):
-                toolbox.share.hide()
-            elif hasattr(toolbox, 'props'):
-                toolbox.props.visible = False
-
+        self.set_toolbar_box(toolbox)
+        toolbox.show()
+        primary_toolbar = toolbox.toolbar
         button = radio_factory('letter', primary_toolbar, self._letter_cb,
                                tooltip=_('listen to the letter names'))
         radio_factory('picture', primary_toolbar, self._picture_cb,
@@ -155,13 +133,12 @@ class IKnowMyABCs(activity.Activity):
 
         self.status = label_factory(primary_toolbar, '', width=300)
 
-        if _HAVE_TOOLBOX:
-            separator_factory(primary_toolbar, True, False)
+        separator_factory(primary_toolbar, True, False)
 
-            stop_button = StopButton(self)
-            stop_button.props.accelerator = '<Ctrl>q'
-            toolbox.toolbar.insert(stop_button, -1)
-            stop_button.show()
+        stop_button = StopButton(self)
+        stop_button.props.accelerator = '<Ctrl>q'
+        toolbox.toolbar.insert(stop_button, -1)
+        stop_button.show()
 
     def _letter_cb(self, event=None):
         ''' click on card to hear the letter name '''
