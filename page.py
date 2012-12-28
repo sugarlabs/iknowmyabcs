@@ -88,12 +88,15 @@ class Page():
         self._pictures = []
         self._press = None
         self._release = None
+        self.timeout = None
 
         self.load_level(os.path.join(self._lessons_path, 'alphabet' + '.csv'))
         self.new_page()
 
     def new_page(self, cardtype='alpha'):
         ''' Load a page of cards '''
+        if self.timeout is not None:
+            gobject.source_remove(self._page.timeout)
         self._hide_cards()
         if cardtype == 'alpha':
             self._alpha_cards()
@@ -183,7 +186,9 @@ class Page():
         self._activity.status.set_text(
             _('Click on the card that corresponds to the sound.'))
         self.target = int(uniform(0, len(self._cards)))
-        gobject.timeout_add(1000, self._play_target_sound)
+        if self.timeout is not None:
+            gobject.source_remove(self.timeout)
+        self.timeout = gobject.timeout_add(1000, self._play_target_sound)
 
     def _play_target_sound(self):
         if self._activity.mode == 'find by letter':
@@ -194,6 +199,7 @@ class Page():
             play_audio_from_file(self, os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
+        self.timeout = None
 
     def _button_press_cb(self, win, event):
         ''' Either a card or list entry was pressed. '''
@@ -222,7 +228,9 @@ class Page():
         elif self._activity.mode in ['find by letter', 'find by word']:
             if self.current_card == self.target:
                 self._activity.status.set_text(_('Very good!'))
-                gobject.timeout_add(1000, self.new_target)
+                if self.timeout is not None:
+                    gobject.source_remove(self.timeout)
+                self.timeout = gobject.timeout_add(1000, self.new_target)
             else:
                 self._activity.status.set_text(_('Please try again.'))
                 self._play_target_sound()
