@@ -34,7 +34,6 @@ from gettext import gettext as _
 import os.path
 
 from page import Page
-from utils.grecord import Grecord
 from utils.play_audio import play_audio_from_file
 from utils.toolbar_utils import separator_factory, label_factory, radio_factory
 
@@ -58,10 +57,6 @@ class IKnowMyABCs(activity.Activity):
         ''' Initialize the toolbars and the reading board '''
         super(IKnowMyABCs, self).__init__(handle)
 
-        self.reading = False
-        self.testing = False
-        self.recording = False
-        self.grecord = None
         self.datapath = get_path(activity, 'instance')
 
         if 'LANG' in os.environ:
