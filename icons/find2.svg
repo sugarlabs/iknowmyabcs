@@ -11,8 +11,7 @@
    width="55"
    height="55"
    viewBox="0 0 55 55"
-   id="svg2"
-   style="fill:#ffffff;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round">
+   id="svg2">
   <metadata
      id="metadata20">
     <rdf:RDF>
@@ -26,24 +25,48 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs18" />
+     id="defs18">
+	
+	
+	
+	
+	
+	
+	
+
+		
+	
+			
+			
+		</defs>
   <rect
      width="44.404602"
      height="30.412962"
      ry="0"
-     x="6.1161056"
-     y="11.935916"
+     x="5.297699"
+     y="12.293519"
      id="rect2997"
      style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-  <text
-     x="16.159618"
-     y="38.136364"
-     id="text13"
-     style="font-size:38.96828842px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill-opacity:1;stroke:none;font-family:Sans">
-    <tspan
-       x="16.159618"
-       y="38.136364"
-       id="tspan8"
-       style="font-size:38.96828842px;fill:#000000">a</tspan>
-  </text>
+  <path
+     d="m 27.499,22.746 c -4.757,0 -8.72,4.744 -8.72,4.744 0,0 3.963,4.767 8.72,4.764 4.757,-0.004 8.722,-4.77 8.722,-4.77 0,0 -3.964,-4.741 -8.722,-4.738 z m 0,8.09 c -1.842,0 -3.335,-1.494 -3.335,-3.336 0,-1.839 1.493,-3.336 3.335,-3.336 1.839,0 3.333,1.497 3.333,3.336 10e-4,1.842 -1.493,3.336 -3.333,3.336 z"
+     id="path3156"
+     style="fill:#010101;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline" />
+  <g
+     transform="translate(28,31.830999)"
+     id="g4455"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1">
+	<path
+   d="m 1.75,9.216 c 0,4.125 3.342,7.47 7.468,7.47 4.121,0 7.466,-3.345 7.466,-7.47 C 16.684,5.093 13.339,1.75 9.218,1.75 5.092,1.75 1.75,5.093 1.75,9.216 z"
+   id="path4457"
+   style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.5;stroke-opacity:1" />
+
+	<line
+   id="line4459"
+   y2="20.919001"
+   x2="20.917999"
+   y1="14.497"
+   x1="14.498"
+   style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.5;stroke-opacity:1" />
+
+</g>
 </svg>
