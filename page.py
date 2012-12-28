@@ -96,7 +96,7 @@ class Page():
     def new_page(self, cardtype='alpha'):
         ''' Load a page of cards '''
         if self.timeout is not None:
-            gobject.source_remove(self._page.timeout)
+            gobject.source_remove(self.timeout)
         self._hide_cards()
         if cardtype == 'alpha':
             self._alpha_cards()
