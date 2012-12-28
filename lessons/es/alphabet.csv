@@ -1,0 +1,36 @@
+# Copyright (c) 2011 Walter Bender y Pacita Pena,,,,,,
+# This work is licensed under a Creative Commons,,,,,,
+# Attribution-NonCommercial 3.0 Unported License.,,,,,,
+# These words represent Nivel 1 in Spanish,,,,,,
+# Use () for highlighted letter in phrase.,,,,,,
+# letter, phrase, RGB color, color name, vowel or consonant, sound file,
+A, (a)ve, #FFFFFF, ave.png, ave.ogg, a.ogg
+B, (b)urro, #2080A0, burro.png, burro.ogg, b.ogg
+C, (c)onejo, #FFC040, conejo.png, conejo.ogg, c.ogg
+D, (d)a(d)o, #20C060, dado.png, dado.ogg, d.ogg
+E, (e)l(e)fant(e), #70A9CE, elefante.png, elefante.ogg, e.ogg
+F, (f)lor, #C160D2, flor.png, flor.ogg, f.ogg
+G, (g)ato, #A0A0A0, gato.png, gato.ogg, g.ogg
+H, (h)elado, #FFFFFF, helado.png, helado.ogg, h.ogg
+I, (i)gles(i)a, #DE1C23, iglesia.png, iglesia.ogg, i.ogg
+J, (j)irafa, #C93C7E, jirafa.png, jirafa.ogg, j.ogg
+K, (k)ilo, #FFC040, kilo.png, kilo.ogg, k.ogg
+L, (l)oro, #00A0FF, loro.png, loro.ogg, l.ogg
+M, (m)esa, #C72020, mesa.png, mesa.ogg, m.ogg
+N, (n)ube, #7A6BBD, nube.png, nube.ogg, n.ogg
+Ñ, (ñ)andú, #80C040/#C93C7E, nandu.png, nandu.ogg, ny.ogg
+O, (o)s(o), #A4221E, oso.png, oso.ogg, o.ogg
+P, (p)ato, #A4221E, pato.png, pato.ogg, p.ogg
+Q, (q)ueso, #FFC040, queso.png, queso.ogg, q.ogg
+R, (r)atón, #F08020, raton.png, raton.ogg, r.ogg
+S, (s)apo, #7EC93C, sapo.png, sapo.ogg, s.ogg
+T, (t)aza, #EE3C8E, taza.png, taza.ogg, t.ogg
+U, (u)va, #00A000, uva.png, uva.ogg, u.ogg
+V, (v)aca, #2080A0, vaca.png, vaca.ogg, v.ogg
+W, (w)aterpolo, #808080, waterpolo.png, waterpolo.ogg, w.ogg
+X, (x)ilófono, #7EC93C, xilofono.png, xilofono.ogg, x.ogg
+Y, (y)ate, #BA6C71, yate.png, yate.ogg, y.ogg
+# Y, Paragua(y), #DE1C23, paraguay.png, paraguay.ogg, y.ogg
+Z, (z)apato, #7EC93C, zapato.png, zapato.ogg, z.ogg
+# RR, pe(rr)o, #F08020, perro.png, perro.ogg, rr.ogg
+# LL, (ll)ama, #C93C7E, llama.png, llama.ogg, ll.ogg

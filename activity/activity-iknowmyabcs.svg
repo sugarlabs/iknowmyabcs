@@ -1,0 +1,38 @@
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [
+	<!ENTITY stroke_color "#000">
+	<!ENTITY fill_color "#eee">
+]><svg height="55px" viewBox="0 0 55 55" width="55px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" stroke="&stroke_color;" fill="&fill_color;">
+  <g>
+    <path
+       d="m 27.503,10.705131 h -0.002 c 0,-0.002 -1.71,-2.0530005 -9.376,-2.5040005 -7.666,-0.449 -11.683,1.602 -11.686,1.603 C 4.541,10.423131 2.944,11.539131 2.944,13.298131 v 27.702 c 0,2.025 1.235,3.494 3.495,3.494 0.003,0 4.41,-1.35 10.004,-1.35 5.589,-0.001 11.061,2.253 11.061,2.253"
+       fill="&fill_color;" stroke="&stroke_color;"
+       style="fill-opacity:1;stroke-width:3.5;stroke-linejoin:round;display:inline" />
+    <path
+       d="m 27.497,10.705131 0,0 c 0,-0.002 1.715,-2.0530005 9.377,-2.5040005 7.668,-0.449 11.686,1.602 11.688,1.603 1.897,0.6190005 3.494,1.7350005 3.494,3.4940005 v 27.702 c 0,2.025 -1.233,3.494 -3.494,3.494 -0.003,0 -4.409,-1.35 -10.004,-1.35 -5.589,-0.001 -11.062,2.253 -11.062,2.253"
+       fill="&fill_color;" stroke="&stroke_color;"
+       style="fill-opacity:1;stroke-width:3.5;stroke-linejoin:round;display:inline" />
+    <line
+       fill="&fill_color;" stroke="&stroke_color;"
+       style="fill-opacity:1;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;display:inline"
+       x1="27.497002"
+       x2="27.499001"
+       y1="10.705131"
+       y2="45.399128"
+       id="line3064" />
+    <path
+       d="m 32.165,43.957131 c 0,0 -0.031,2.906 -4.666,2.906 -4.632,0 -4.663,-2.906 -4.663,-2.906"
+       fill="&stroke_color;" stroke="&stroke_color;"
+       style="stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;display:inline" />
+  </g>
+  <text
+     x="28.15962"
+     y="36.948204"
+     style="font-size:38.96828842px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill-opacity:1;stroke:none;font-family:Sans">
+    <tspan
+       x="28.15962"
+       y="36.948204"
+       id="tspan8"
+       fill="&stroke_color;" stroke="none;"
+       style="font-size:38.96828842px;">a</tspan>
+  </text>
+</svg>
