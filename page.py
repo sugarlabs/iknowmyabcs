@@ -11,9 +11,9 @@
 # License along with this library; if not, write to the
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
+
 from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
 import os
-import codecs
 from random import uniform
 
 from gettext import gettext as _
@@ -23,11 +23,8 @@ from utils.play_audio import play_audio_from_file
 import logging
 _logger = logging.getLogger('iknowmyabcs-activity')
 
-try:
-    from sugar3.graphics import style
-    GRID_CELL_SIZE = style.GRID_CELL_SIZE
-except ImportError:
-    GRID_CELL_SIZE = 0
+from sugar3.graphics import style
+GRID_CELL_SIZE = style.GRID_CELL_SIZE
 
 from genpieces import generate_card
 from utils.sprites import Sprites, Sprite
@@ -78,7 +75,6 @@ class Page():
         self._grid_x_offset = int(
             (self._width - XDIM * (self._card_width + GUTTER * 2)) / 2)
         self._grid_y_offset = 0
-        # self._scale = self._width / 240.
         self._scale = self._card_width / 80
         self._sprites = Sprites(self._canvas)
         self.current_card = 0
@@ -141,13 +137,13 @@ class Page():
             if type(self._color_data[self.current_card][0]) == type([]):
                 stroke = self._test_for_stroke()
                 top = svg_str_to_pixbuf(generate_card(
-                        string=card[0].lower(),
+                        string=card[0],
                         colors=[self._color_data[self.current_card][0][0],
                                 '#FFFFFF'],
                         scale=self._scale,
                         center=True))
                 bot = svg_str_to_pixbuf(generate_card(
-                        string=card[0].lower(),
+                        string=card[0],
                         colors=[self._color_data[self.current_card][0][1],
                                 '#FFFFFF'],
                         scale=self._scale,
@@ -163,7 +159,7 @@ class Page():
                 stroke = self._test_for_stroke()
                 self._cards.append(Sprite(self._sprites, x, y,
                                           svg_str_to_pixbuf(generate_card(
-                                string=card[0].lower(),
+                                string=card[0],
                                 colors=[self._color_data[self.current_card][0],
                                         '#FFFFFF'],
                                 stroke=stroke,
@@ -280,36 +276,31 @@ class Page():
         self._color_data = []
         self._image_data = []
         self._media_data = []  # (image sound, letter sound)
-        f = codecs.open(path, encoding='utf-8')
+        f = open(path)
         for line in f:
             if len(line) > 0 and line[0] not in '#\n':
                 words = line.split(', ')
                 self._card_data.append([words[0], 
                                         words[1].replace('-', ', ')])
                 if words[2].count('#') > 1:
-                    self._color_data.append(
-                        [words[2].split('/')])
+                    self._color_data.append([words[2].split('/')])
                 else:
-                    self._color_data.append(
-                        [words[2]])
+                    self._color_data.append([words[2]])
                 self._image_data.append(words[3])
                 self._media_data.append((words[4], words[5]))
         f.close()
 
         self._clear_all()
         self._cards = []
-        self._colored_letters_lower = []
-        self._colored_letters_upper = []
 
     def _clear_all(self):
         ''' Hide everything so we can begin a new page. '''
         self._hide_cards()
 
+
 def svg_str_to_pixbuf(svg_string):
     ''' Load pixbuf from SVG string. '''
     pl = GdkPixbuf.PixbufLoader.new_with_type('svg')
-    if type(svg_string) == unicode:
-	svg_string = svg_string.encode('ascii', 'replace')
     pl.write(svg_string)
     pl.close()
     return pl.get_pixbuf()
@@ -318,4 +309,3 @@ def svg_str_to_pixbuf(svg_string):
 def image_file_to_pixbuf(file_path, w, h):
     ''' Load pixbuf from file '''
     return GdkPixbuf.Pixbuf.new_from_file_at_size(file_path, int(w), int(h))
-        
