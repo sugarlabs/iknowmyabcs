@@ -22,13 +22,36 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA
 
-
+import os
 import subprocess
 
-def play_audio_from_file(parent, file_path):
-    """ Audio media """
-    command_line = ['gst-launch', 'filesrc', 'location=' + file_path,
-                    '! oggdemux', '! vorbisdec', '! audioconvert',
-                    '! alsasink']
-    subprocess.call(command_line)
+import logging
+_logger = logging.getLogger('iknowmyabcs-activity')
 
+
+GST_PATHS = ['/usr/bin/gst-launch', '/bin/gst-launch',
+             '/usr/local/bin/gst-launch',
+             '/usr/bin/gst-launch-1.0', '/bin/gst-launch-1.0',
+             '/usr/local/bin/gst-launch-1.0',
+             '/usr/bin/gst-launch-0.10', '/bin/gst-launch-0.10',
+             '/usr/local/bin/gst-launch-0.10']
+
+
+def play_audio_from_file(file_path):
+    """ Audio media """
+
+    if not hasattr(play_audio_from_file, 'gst_launch'):
+        for path in GST_PATHS:
+            if os.path.exists(path):
+                play_audio_from_file.gst_launch = path
+                _logger.debug(path)
+                break
+
+    if not hasattr(play_audio_from_file, 'gst_launch'):
+        _logger.debug('gst-launch not found')
+        return
+
+    command_line = [play_audio_from_file.gst_launch, 'filesrc',
+                    'location=' + file_path, '! oggdemux', '! vorbisdec',
+                    '! audioconvert', '! alsasink']
+    subprocess.check_output(command_line)

@@ -186,11 +186,11 @@ class Page():
 
     def _play_target_sound(self):
         if self._activity.mode == 'find by letter':
-            play_audio_from_file(self, os.path.join(
+            play_audio_from_file(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][1]))
         else:
-            play_audio_from_file(self, os.path.join(
+            play_audio_from_file(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
         self.timeout = None
@@ -216,7 +216,7 @@ class Page():
         elif spr in self._pictures:
             self.current_card = self._pictures.index(spr)
         if self._activity.mode in ['letter', 'picture']:
-            play_audio_from_file(self, os.path.join(
+            play_audio_from_file(os.path.join(
                     self._sounds_path,
                     self._media_data[self.current_card][1]))
         elif self._activity.mode in ['find by letter', 'find by word']:
