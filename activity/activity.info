@@ -1,6 +1,6 @@
 [Activity]
 name = I Know My ABCs
-activity_version = 1
+activity_version = 3
 license = GPLv3
 bundle_id = org.sugarlabs.IKnowMyABCs
 exec = sugar-activity IKnowMyABCs.IKnowMyABCs
