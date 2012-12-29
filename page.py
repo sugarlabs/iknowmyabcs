@@ -262,11 +262,11 @@ class Page():
 
     def invalt(self, x, y, w, h):
         ''' Mark a region for refresh '''
-	rectangle = Gdk.Rectangle()
-	rectangle.x = x
-	rectangle.y = y
-	rectangle.width = w
-	rectangle.height = h
+        rectangle = Gdk.Rectangle()
+        rectangle.x = x
+        rectangle.y = y
+        rectangle.width = w
+        rectangle.height = h
         self._canvas.window.invalidate_rect(rectangle)
 
     def load_level(self, path):
@@ -280,7 +280,7 @@ class Page():
         for line in f:
             if len(line) > 0 and line[0] not in '#\n':
                 words = line.split(', ')
-                self._card_data.append([words[0], 
+                self._card_data.append([words[0],
                                         words[1].replace('-', ', ')])
                 if words[2].count('#') > 1:
                     self._color_data.append([words[2].split('/')])
