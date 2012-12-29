@@ -12,6 +12,7 @@
 
 
 from gi.repository import Gtk
+
 from sugar3.graphics.radiotoolbutton import RadioToolButton
 from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.combobox import ComboBox
@@ -86,7 +87,7 @@ def radio_factory(button_name, toolbar, callback, cb_arg=None, tooltip=None,
                   group=None):
     ''' Add a radio button to a toolbar '''
     button = RadioToolButton(group=group)
-    button.set_named_icon(button_name)
+    button.set_icon_name(button_name)
     if callback is not None:
         if cb_arg is None:
             button.connect('clicked', callback)
@@ -104,7 +105,7 @@ def radio_factory(button_name, toolbar, callback, cb_arg=None, tooltip=None,
 
 def label_factory(toolbar, label_text, width=None):
     ''' Factory for adding a label to a toolbar '''
-    label = Gtk.Label(label_text)
+    label = Gtk.Label(label=label_text)
     label.set_line_wrap(True)
     if width is not None:
         label.set_size_request(width, -1)  # doesn't work on XOs
@@ -146,15 +147,14 @@ def image_factory(image, toolbar, tooltip=None):
     img_tool.show()
     return img
 
-# PLEASE FIXME #
-"""
+
 def spin_factory(default, min, max, callback, toolbar):
     spin_adj = Gtk.Adjustment(default, min, max, 1, 32, 0)
-    spin = gtk.SpinButton(spin_adj, 0, 0)
+    spin = Gtk.SpinButton(spin_adj, 0, 0)
     spin_id = spin.connect('value-changed', callback)
     spin.set_numeric(True)
     spin.show()
-    toolitem = gtk.ToolItem()
+    toolitem = Gtk.ToolItem()
     toolitem.add(spin)
     if hasattr(toolbar, 'insert'):  # the main toolbar
         toolbar.insert(toolitem, -1)
@@ -162,4 +162,3 @@ def spin_factory(default, min, max, callback, toolbar):
         toolbar.props.page.insert(toolitem, -1)
     toolitem.show()
     return spin
-"""
