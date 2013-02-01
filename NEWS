@@ -1,3 +1,14 @@
+5
+
+Enhancements based on feedback from .NI:
+
+* Level 1: add the uppercase and lowercase letters
+* Level 2: link the name of the letter and its image;
+  for example: The XO says: "A" de "Ave", "E" de Elefante
+* Change the background color to one of the XO colors
+* Add visual to feedback for Levels 3 and 4
+* Don't repeat letter until all letters seen
+
 3
 
 * GTK3 port by Ignacio Rodriguez

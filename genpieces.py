@@ -146,6 +146,16 @@ def generator(datapath):
     close_file(f)
 
 
+def genblank(w, h, colors, stroke_width=1.0):
+    svg = SVG()
+    svg.set_scale(1)
+    svg.set_colors(colors)
+    svg.set_stroke_width(stroke_width)
+    svg_string = svg.header(int(w / 80), int(h / 60))
+    svg_string += svg.footer()
+    return svg_string
+
+
 def main():
     return 0
 

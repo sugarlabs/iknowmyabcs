@@ -65,16 +65,21 @@ class IKnowMyABCs(activity.Activity):
         # FIXME: find some reasonable default situation
         language = 'es'
 
-        if os.path.exists(os.path.join('~', 'Activities',
+        home_path = os.path.expanduser('~')
+        if os.path.exists(os.path.join(home_path, 'Activities',
                                        'IKnowMyABCs.activity')):
-            self._lessons_path = os.path.join('~', 'Activities',
-                                              'IKnowMyABCs.activity',
-                                              'lessons', language)
+            self.activity_path = os.path.join(home_path, 'Activities',
+                                              'IKnowMyABCs.activity')
         else:
-            self._lessons_path = os.path.join('.', 'lessons', language)
+            self.activity_path = os.path.abspath('.')
 
-        self._images_path = self._lessons_path.replace('lessons', 'images')
-        self._sounds_path = self._lessons_path.replace('lessons', 'sounds')
+        self._lessons_path = os.path.join(self.activity_path,
+                                          'lessons', language)
+        self._images_path = os.path.join(self.activity_path,
+                                          'images', language)
+        self._sounds_path = os.path.join(self.activity_path,
+                                          'sounds', language)
+
         self._setup_toolbars()
 
         # Create a canvas
