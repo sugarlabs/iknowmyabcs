@@ -50,11 +50,6 @@ class IKnowMyABCs(activity.Activity):
         ''' Initialize the toolbars and the reading board '''
         super(IKnowMyABCs, self).__init__(handle)
 
-        self.reading = False
-        self.testing = False
-        self.recording = False
-        self.datapath = get_path(activity, 'instance')
-
         if 'LANG' in os.environ:
             language = os.environ['LANG'][0:2]
         elif 'LANGUAGE' in os.environ:
@@ -65,13 +60,7 @@ class IKnowMyABCs(activity.Activity):
         # FIXME: find some reasonable default situation
         language = 'es'
 
-        home_path = os.path.expanduser('~')
-        if os.path.exists(os.path.join(home_path, 'Activities',
-                                       'IKnowMyABCs.activity')):
-            self.activity_path = os.path.join(home_path, 'Activities',
-                                              'IKnowMyABCs.activity')
-        else:
-            self.activity_path = os.path.abspath('.')
+        self.activity_path = activity.get_bundle_path()
 
         self._lessons_path = os.path.join(self.activity_path,
                                           'lessons', language)
