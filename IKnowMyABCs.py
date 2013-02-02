@@ -1,4 +1,4 @@
-#Copyright (c) 2012 Walter Bender
+#Copyright (c) 2012,13 Walter Bender
 #Copyright (c) 2012 Ignacio Rodriguez
 
 # This program is free software; you can redistribute it and/or modify
@@ -16,21 +16,14 @@ from gi.repository import Gdk
 
 from sugar3.activity import activity
 from sugar3.graphics.toolbarbox import ToolbarBox, ToolbarButton
-
+from sugar3.graphics.toolbutton import ToolButton
 from sugar3.activity.widgets import ActivityToolbarButton
 from sugar3.activity.widgets import StopButton
-
-from sugar3.graphics.toolbutton import ToolButton
-from sugar3.graphics.combobox import ComboBox
-from sugar3.graphics.toolcombobox import ToolComboBox
-from sugar3.datastore import datastore
-from sugar3 import profile
 
 from gettext import gettext as _
 import os.path
 
 from page import Page
-from utils.play_audio import play_audio_from_file
 from utils.toolbar_utils import separator_factory, label_factory, radio_factory
 
 import logging
