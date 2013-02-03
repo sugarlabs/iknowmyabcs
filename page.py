@@ -217,7 +217,8 @@ class Page():
         self.target = int(uniform(0, len(self._cards)))
         # Don't repeat
         while self.target in self._deja_vu:
-            self.target = int(uniform(0, len(self._cards)))
+            self.target += 1
+            self.target %= len(self._cards)
         self._deja_vu.append(self.target)
         if len(self._deja_vu) == len(self._cards):
             self._deja_vu = []
