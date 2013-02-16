@@ -116,6 +116,8 @@ stroke:#000000;%s\">" % (font_size, self._stroke, align)
 def generate_card(string='a', colors=['#FF0000', '#FFFFFF'],
                   background=True, scale=1, stroke=False, center=False,
                   font_size=40):
+    if len(string) > 2:
+        font_size *= 0.75
     svg = SVG()
     svg.set_scale(scale)
     svg.set_colors(colors)
