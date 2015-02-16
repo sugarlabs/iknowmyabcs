@@ -6,3 +6,4 @@ bundle_id = org.sugarlabs.IKnowMyABCs
 exec = sugar-activity IKnowMyABCs.IKnowMyABCs
 icon = activity-iknowmyabcs
 show_launcher = yes
+category = language
