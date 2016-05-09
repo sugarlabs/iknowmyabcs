@@ -34,11 +34,11 @@ msgid "Please try again."
 msgstr ""
 
 #: IKnowMyABCs.py:116 IKnowMyABCs.py:118
-msgid "listen to the letter names"
+msgid "Listen to the letter names."
 msgstr ""
 
 #: IKnowMyABCs.py:127 IKnowMyABCs.py:131
-msgid "find the letter that corresponds to the sound"
+msgid "Find the letter that corresponds to the sound."
 msgstr ""
 
 #: IKnowMyABCs.py:146 IKnowMyABCs.py:154

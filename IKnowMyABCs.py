@@ -97,9 +97,9 @@ class IKnowMyABCs(activity.Activity):
         toolbox.show()
         primary_toolbar = toolbox.toolbar
         button = radio_factory('letter', primary_toolbar, self._letter_cb,
-                               tooltip=_('listen to the letter names'))
+                               tooltip=_('Listen to the letter names.'))
         radio_factory('picture', primary_toolbar, self._picture_cb,
-                      tooltip=_('listen to the letter names'),
+                      tooltip=_('Listen to the letter names.'),
                       group=button)
         '''
         radio_factory('sort', primary_toolbar, self._sort_cb,
@@ -108,11 +108,11 @@ class IKnowMyABCs(activity.Activity):
         '''
         radio_factory('find1', primary_toolbar, self._find1_cb,
                       tooltip=_(
-                'find the letter that corresponds to the sound'),
+                'Find the letter that corresponds to the sound.'),
                       group=button)
         radio_factory('find2', primary_toolbar, self._find2_cb,
                       tooltip=_(
-                'find the letter that corresponds to the sound'),
+                'Find the letter that corresponds to the sound.'),
                       group=button)
 
         self.status = label_factory(primary_toolbar, '', width=300)
