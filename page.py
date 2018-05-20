@@ -94,38 +94,14 @@ class Page():
                                                 self._colors[0]))))
         self._my_canvas.type = 'background'
 
-        self._smile = Sprite(self._sprites,
-                             int(self._width / 4),
-                             int(self._height / 4),
-                             GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.join(self._activity.activity_path,
-                             'images', 'correct.png'),
-                int(self._width / 2),
-                int(self._height / 2)))
-
-        self._frown = Sprite(self._sprites,
-                             int(self._width / 4),
-                             int(self._height / 4),
-                             GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.join(self._activity.activity_path,
-                             'images', 'wrong.png'),
-                int(self._width / 2),
-                int(self._height / 2)))
-
         self.load_level(os.path.join(self._lessons_path, 'alphabet' + '.csv'))
         self.new_page()
-
-    def _hide_feedback(self):
-        if hasattr(self, '_smile'):
-            self._smile.hide()
-            self._frown.hide()
 
     def new_page(self, cardtype='alpha'):
         ''' Load a page of cards '''
         if self.timeout is not None:
             GObject.source_remove(self.timeout)
         self._hide_cards()
-        self._hide_feedback()
         if cardtype == 'alpha':
             self._alpha_cards()
         else:
@@ -274,32 +250,20 @@ class Page():
         else:
             if self.current_card == self.target:
                 self._activity.status.set_text(_('Very good!'))
-                self._play(True)
                 if self.timeout is not None:
                     GObject.source_remove(self.timeout)
                 self.timeout = GObject.timeout_add(1000, self._correct_feedback)
             else:
                 self._activity.status.set_text(_('Please try again.'))
-                self._play(False)
                 if self.timeout is not None:
                     GObject.source_remove(self.timeout)
                 self.timeout = GObject.timeout_add(1000, self._wrong_feedback)
 
     def _correct_feedback(self):
-        self._hide_feedback()
         self.new_target()
 
     def _wrong_feedback(self):
-        self._hide_feedback()
         self._play_target_sound()
-
-    def _play(self, great):
-        if great:
-            self._smile.set_layer(1000)
-            # play_audio_from_file(os.getcwd() + '/sounds/great.ogg')
-        else:
-            self._frown.set_layer(1000)
-            # play_audio_from_file(os.getcwd() + '/sounds/bad.ogg')
 
     def _keypress_cb(self, area, event):
         ''' No keyboard shortcuts at the moment. Perhaps jump to the page
