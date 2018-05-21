@@ -1,10 +1,10 @@
 """
  aplay.py
- refactored based on Jukebox Activity
  Copyright (C) 2007 Andy Wingo <wingo@pobox.com>
  Copyright (C) 2007 Red Hat, Inc.
  Copyright (C) 2008-2010 Kushal Das <kushal@fedoraproject.org>
  Copyright (C) 2010-11 Walter Bender
+ Copyright (C) 2013-14 Aneesh Dogra <lionaneesh@gmail.com>
 """
 
 # This program is free software; you can redistribute it and/or
@@ -22,36 +22,57 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA
 
-import os
-import subprocess
+import gi
+gi.require_version('Gst', '1.0')
+from gi.repository import GObject, Gst
 
 import logging
-_logger = logging.getLogger('iknowmyabcs-activity')
+import time
+_logger = logging.getLogger('iknowabcs-activity')
 
-
-GST_PATHS = ['/usr/bin/gst-launch', '/bin/gst-launch',
-             '/usr/local/bin/gst-launch',
-             '/usr/bin/gst-launch-1.0', '/bin/gst-launch-1.0',
-             '/usr/local/bin/gst-launch-1.0',
-             '/usr/bin/gst-launch-0.10', '/bin/gst-launch-0.10',
-             '/usr/local/bin/gst-launch-0.10']
-
-
-def play_audio_from_file(file_path):
+def play_audio_from_file(file_path, queue=False):
     """ Audio media """
+    if hasattr(play_audio_from_file, 'player') and \
+       play_audio_from_file.player:
+        if queue:
+            if hasattr(play_audio_from_file, 'queue'):
+                if play_audio_from_file.queue and \
+                   file_path in play_audio_from_file.queue:
+                    # if we already have that file in the queue
+                    # we'll just update the timer.
+                    if hasattr(play_audio_from_file, 'queue_timeout'):
+                        time.sleep(0.01)
+                        GObject.source_remove(play_audio_from_file.queue_timeout)
+                        f = Gst.Format(Gst.Format.TIME)
+                        duration = play_audio_from_file.player.query_duration(f)[0]
+                        timeout = duration / 1000000000.
+                        play_audio_from_file.queue_timeout = \
+                            GObject.timeout_add(int(timeout * 1000), \
+                                            play_audio_from_file, file_path)
+                        return
+            else:
+                play_audio_from_file.queue = []
 
-    if not hasattr(play_audio_from_file, 'gst_launch'):
-        for path in GST_PATHS:
-            if os.path.exists(path):
-                play_audio_from_file.gst_launch = path
-                _logger.debug(path)
-                break
+            time.sleep(0.01)
+            f = Gst.Format(Gst.Format.TIME)
+            duration = play_audio_from_file.player.query_duration(f)[0]
+            timeout = duration / 1000000000.
+            play_audio_from_file.queue_timeout = GObject.timeout_add( \
+                        int(timeout * 1000), play_audio_from_file, file_path)
+            play_audio_from_file.queue.append(file_path)
+            return
+        else:
+            play_audio_from_file.player.set_state(Gst.State.NULL)
 
-    if not hasattr(play_audio_from_file, 'gst_launch'):
-        _logger.debug('gst-launch not found')
-        return
+    else:
+        Gst.init(None)
 
-    command_line = [play_audio_from_file.gst_launch, 'filesrc',
-                    'location=' + file_path, '! oggdemux', '! vorbisdec',
-                    '! audioconvert', '! alsasink']
-    subprocess.check_output(command_line)
+    play_audio_from_file.player = Gst.parse_launch (
+                    'filesrc location=%s ! oggdemux ! vorbisdec ! ' \
+                    'audioconvert ! alsasink' % (file_path))
+
+    if not play_audio_from_file.player:
+        _logger.warning('unable to play audio file %s' % (file_path))
+
+    else:
+        play_audio_from_file.player.set_state(Gst.State.PLAYING)
