@@ -1,3 +1,10 @@
+6
+
+* Fix Audio bug
+* Port setup.py to Gtk+3
+* Add README
+* Update Metadata
+
 5
 
 Enhancements based on feedback from .NI:
