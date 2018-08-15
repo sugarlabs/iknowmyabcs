@@ -6,10 +6,11 @@ I Know My ABCs is an activity for introducing the Spanish alphabet. It displays 
 How to use?
 ===========
 
-I Know My ABCs is part of the Sugar desktop.  Please refer to;
+I Know My ABCs is not part of the Sugar desktop, but can be added.  Please refer to;
 
 * [How to Get Sugar on sugarlabs.org](https://sugarlabs.org/),
 * [How to use Sugar](https://help.sugarlabs.org/),
+* [Download I Know My ABCs using Browse](https://activities.sugarlabs.org/), search for `ABCs`, then download I Know My ABCs, and;
 * [How to use I Know My ABCs](https://help.sugarlabs.org/iknowmyabcs.html)
 
 How to upgrade?
