@@ -223,7 +223,7 @@ class Page():
     def _button_press_cb(self, win, event):
         ''' Either a card or list entry was pressed. '''
         win.grab_focus()
-        x, y = map(int, event.get_coords())
+        x, y = list(map(int, event.get_coords()))
 
         spr = self._sprites.find_sprite((x, y))
         self._press = spr
@@ -234,7 +234,7 @@ class Page():
         ''' Play a sound or video or jump to a card as indexed in the list. '''
         win.grab_focus()
 
-        x, y = map(int, event.get_coords())
+        x, y = list(map(int, event.get_coords()))
         spr = self._sprites.find_sprite((x, y))
         if spr is None:
             return
@@ -337,7 +337,7 @@ class Page():
 def svg_str_to_pixbuf(svg_string):
     ''' Load pixbuf from SVG string. '''
     pl = GdkPixbuf.PixbufLoader.new_with_type('svg')
-    pl.write(svg_string)
+    pl.write(svg_string.encode("utf-8"))
     pl.close()
     return pl.get_pixbuf()
 
