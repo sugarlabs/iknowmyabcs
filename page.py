@@ -101,6 +101,7 @@ class Page():
         ''' Load a page of cards '''
         if self.timeout is not None:
             GObject.source_remove(self.timeout)
+            self.timeout = None
         self._hide_cards()
         if cardtype == 'alpha':
             self._alpha_cards()
