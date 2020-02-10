@@ -1,3 +1,7 @@
+* Update README - not a Fructose or Honey activity (James Cameron),
+* Port to Python 3 (Ayush Nawal),
+* Fix source_remove warning (Ayush Nawal),
+
 6
 
 * Fix Audio bug
