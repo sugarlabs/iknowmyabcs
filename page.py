@@ -12,7 +12,7 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
+from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 import os
 from random import uniform
 
@@ -100,7 +100,7 @@ class Page():
     def new_page(self, cardtype='alpha'):
         ''' Load a page of cards '''
         if self.timeout is not None:
-            GObject.source_remove(self.timeout)
+            GLib.source_remove(self.timeout)
             self.timeout = None
         self._hide_cards()
         if cardtype == 'alpha':
@@ -200,8 +200,8 @@ class Page():
         if len(self._deja_vu) == len(self._cards):
             self._deja_vu = []
         if self.timeout is not None:
-            GObject.source_remove(self.timeout)
-        self.timeout = GObject.timeout_add(1000, self._play_target_sound)
+            GLib.source_remove(self.timeout)
+        self.timeout = GLib.timeout_add(1000, self._play_target_sound)
 
     def _play_target_sound(self):
         if self._activity.mode in ['letter', 'find by letter']:
@@ -212,7 +212,7 @@ class Page():
             play_audio_from_file(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][1]))
-            GObject.timeout_add(1000, play_audio_from_file, os.path.join(
+            GLib.timeout_add(1000, play_audio_from_file, os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
         else:
@@ -252,13 +252,13 @@ class Page():
             if self.current_card == self.target:
                 self._activity.status.set_text(_('Very good!'))
                 if self.timeout is not None:
-                    GObject.source_remove(self.timeout)
-                self.timeout = GObject.timeout_add(1000, self._correct_feedback)
+                    GLib.source_remove(self.timeout)
+                self.timeout = GLib.timeout_add(1000, self._correct_feedback)
             else:
                 self._activity.status.set_text(_('Please try again.'))
                 if self.timeout is not None:
-                    GObject.source_remove(self.timeout)
-                self.timeout = GObject.timeout_add(1000, self._wrong_feedback)
+                    GLib.source_remove(self.timeout)
+                self.timeout = GLib.timeout_add(1000, self._wrong_feedback)
 
     def _correct_feedback(self):
         self.new_target()

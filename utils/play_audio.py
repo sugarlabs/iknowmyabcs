@@ -24,7 +24,7 @@
 
 import gi
 gi.require_version('Gst', '1.0')
-from gi.repository import GObject, Gst
+from gi.repository import GLib, Gst
 
 import logging
 import time
@@ -42,12 +42,12 @@ def play_audio_from_file(file_path, queue=False):
                     # we'll just update the timer.
                     if hasattr(play_audio_from_file, 'queue_timeout'):
                         time.sleep(0.01)
-                        GObject.source_remove(play_audio_from_file.queue_timeout)
+                        GLib.source_remove(play_audio_from_file.queue_timeout)
                         f = Gst.Format(Gst.Format.TIME)
                         duration = play_audio_from_file.player.query_duration(f)[0]
                         timeout = duration / 1000000000.
                         play_audio_from_file.queue_timeout = \
-                            GObject.timeout_add(int(timeout * 1000), \
+                            GLib.timeout_add(int(timeout * 1000), \
                                             play_audio_from_file, file_path)
                         return
             else:
@@ -57,7 +57,7 @@ def play_audio_from_file(file_path, queue=False):
             f = Gst.Format(Gst.Format.TIME)
             duration = play_audio_from_file.player.query_duration(f)[0]
             timeout = duration / 1000000000.
-            play_audio_from_file.queue_timeout = GObject.timeout_add( \
+            play_audio_from_file.queue_timeout = GLib.timeout_add( \
                         int(timeout * 1000), play_audio_from_file, file_path)
             play_audio_from_file.queue.append(file_path)
             return
