@@ -1,3 +1,10 @@
+
+7
+
+* Regenerate POT file (Jui Pradhan),
+* Fetch Translations (Jui Pradhan),
+* Port from GObject to GLib (Jui Pradhan),
+* Deanglify links to help.sugarlabs.org (James Cameron),
 * Update README - not a Fructose or Honey activity (James Cameron),
 * Port to Python 3 (Ayush Nawal),
 * Fix source_remove warning (Ayush Nawal),
