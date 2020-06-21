@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-01 17:52+0530\n"
+"POT-Creation-Date: 2020-06-21 22:34+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,14 +37,14 @@ msgstr ""
 msgid "Click on a card to hear a sound."
 msgstr ""
 
-#: page.py:192
+#: page.py:193
 msgid "Click on the card that corresponds to the sound."
 msgstr ""
 
-#: page.py:252
+#: page.py:253
 msgid "Very good!"
 msgstr ""
 
-#: page.py:257
+#: page.py:258
 msgid "Please try again."
 msgstr ""
