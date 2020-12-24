@@ -12,11 +12,11 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
+import gi
 gi.require_version('Gst','1.0')
-from gi.repository import Gtk, Gdk, GLib, GdkPixbuf, Gst
+from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 import os
 from random import uniform
-Gst.init(None)
 from gettext import gettext as _
 
 
