@@ -12,13 +12,13 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
+gi.require_version('Gst','1.0')
+from gi.repository import Gtk, Gdk, GLib, GdkPixbuf, Gst
 import os
 from random import uniform
-
+Gst.init(None)
 from gettext import gettext as _
 
-from utils.play_audio import play_audio_from_file
 
 import logging
 _logger = logging.getLogger('iknowmyabcs-activity')
@@ -29,7 +29,7 @@ GRID_CELL_SIZE = style.GRID_CELL_SIZE
 
 from genpieces import generate_card, genblank
 from utils.sprites import Sprites, Sprite
-
+from aplay import aplay
 
 XDIM = 6
 YDIM = 5
@@ -205,18 +205,18 @@ class Page():
 
     def _play_target_sound(self):
         if self._activity.mode in ['letter', 'find by letter']:
-            play_audio_from_file(os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][1]))
         elif self._activity.mode == 'picture':
-            play_audio_from_file(os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][1]))
-            GLib.timeout_add(1000, play_audio_from_file, os.path.join(
+            GLib.timeout_add(1000, aplay.play, os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
         else:
-            play_audio_from_file(os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
         self.timeout = None
