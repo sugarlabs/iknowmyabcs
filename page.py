@@ -207,18 +207,18 @@ class Page():
         if self._activity.mode in ['letter', 'find by letter']:
             aplay.play(os.path.join(
                     self._sounds_path,
-                    self._media_data[self.target][1])[:-1])
+                    self._media_data[self.target][1]).replace('\n', ' ').replace('\r', ''))
         elif self._activity.mode == 'picture':
             aplay.play(os.path.join(
                     self._sounds_path,
-                    self._media_data[self.target][1])[:-1])
+                    self._media_data[self.target][1]).replace('\n', ' ').replace('\r', ''))
             GLib.timeout_add(1000, aplay.play, os.path.join(
                     self._sounds_path,
-                    self._media_data[self.target][0])[:-1])
+                    self._media_data[self.target][0]).replace('\n', ' ').replace('\r', ''))
         else:
             aplay.play(os.path.join(
                     self._sounds_path,
-                    self._media_data[self.target][0])[:-1])
+                    self._media_data[self.target][0]).replace('\n', ' ').replace('\r', ''))
         self.timeout = None
 
     def _button_press_cb(self, win, event):
