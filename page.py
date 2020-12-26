@@ -18,7 +18,7 @@ from random import uniform
 
 from gettext import gettext as _
 
-from utils.play_audio import play_audio_from_file
+from aplay import aplay
 
 import logging
 _logger = logging.getLogger('iknowmyabcs-activity')
@@ -205,18 +205,18 @@ class Page():
 
     def _play_target_sound(self):
         if self._activity.mode in ['letter', 'find by letter']:
-            play_audio_from_file(os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][1]))
         elif self._activity.mode == 'picture':
-            play_audio_from_file(os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][1]))
-            GLib.timeout_add(1000, play_audio_from_file, os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
         else:
-            play_audio_from_file(os.path.join(
+            aplay.play(os.path.join(
                     self._sounds_path,
                     self._media_data[self.target][0]))
         self.timeout = None
@@ -316,7 +316,7 @@ class Page():
         f = open(path)
         for line in f:
             if len(line) > 0 and line[0] not in '#\n':
-                words = line.split(', ')
+                words = line.strip().split(', ')
                 self._card_data.append([words[0],
                                         words[1].replace('-', ', ')])
                 if words[2].count('#') > 1:

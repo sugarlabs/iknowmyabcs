@@ -19,3 +19,10 @@ How to upgrade?
 On Sugar desktop systems;
 * use [My Settings](https://help.sugarlabs.org/my_settings.html), [Software Update](https://help.sugarlabs.org/my_settings.html#software-update), or;
 * use Browse to open [activities.sugarlabs.org](https://activities.sugarlabs.org/), search for `ABCs`, then download.
+
+How to integrate?
+=================
+
+I Know My ABCs depends on Python, the Sugar Toolkit, PyGObject bindings for GTK 3, and GStreamer.
+
+I Know My ABCs is started by [Sugar](https://github.com/sugarlabs/sugar).
