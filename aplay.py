@@ -60,8 +60,9 @@ class Aplay:
 
     def play(self, name):
         self._queue.put(name)
-        if self._pipeline.get_state(Gst.CLOCK_TIME_NONE)[1] == Gst.State.NULL:
-            self._dequeue()
+        if self._pipeline:
+            if self._pipeline.get_state(Gst.CLOCK_TIME_NONE)[1] == Gst.State.NULL:
+                self._dequeue()
 
     def close(self):
         self._pipeline.set_state(Gst.State.NULL)
